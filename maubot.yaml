@@ -1,0 +1,13 @@
+maubot: 0.1.0
+id: uk.a09.maubot.wallingfordbot
+version: 1.0.16
+license: AGPL-3.0-or-later
+modules:
+  - wallingfordbot
+main_class: WallingfordBot
+config: true
+database: true
+database_type: asyncpg
+webapp: true
+extra_files:
+  - base-config.yaml

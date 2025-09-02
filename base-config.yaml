@@ -1,0 +1,64 @@
+# Wallingford Bot Configuration
+
+# Room Configuration
+rooms:
+  alex_private: "!example:matrix.org"  # Alex's private room ID
+  group_chat: "!example:matrix.org"    # Group chat room ID
+
+# User Configuration  
+users:
+  alex_user_id: "@alex:matrix.org"     # Alex's Matrix user ID
+
+# Home Assistant Integration
+homeassistant:
+  webhook_secret: "your-webhook-secret-here"  # Secret for webhook authentication
+
+# Activity Configuration
+activities:
+  lunch:
+    emoji: "🍽️"
+    text: "lunch at 12:30"
+    time: "12:30"
+    response: "Great! Alex will join for lunch at 12:30."
+  picnic_dinner:
+    emoji: "🥪" 
+    text: "Alex to bring back a picnic dinner"
+    response: "Alex will go shopping on his way home for a picnic dinner!"
+  pub_dinner:
+    emoji: "🍺"
+    text: "go to the pub for dinner"
+    response: "Sounds good! Alex will meet you at the pub for dinner."
+  evening_walk:
+    emoji: "🚶"
+    text: "an evening walk"
+    response: "Perfect! Alex will join for an evening walk."
+  evening_cycle:
+    emoji: "🚴"
+    text: "an evening cycle"
+    response: "Nice! Alex will come along for an evening cycle."
+  other_fun:
+    emoji: "🎉"
+    text: "other fun"
+    response: "Alex is up for some fun activities!"
+
+# Confirmation Options
+confirmation_emojis:
+  - "🏠"  # Staying at Wallingford, free for all activities
+  - "🏢"  # Around but busy this evening (lunch only)
+  - "🕒"  # Around but busy all day (no activities)
+  - "🚗"  # Going home
+  - "❓"  # Unsure
+
+# Timing Configuration
+timing:
+  lunch_time: "12:30"
+  work_end_time: "17:30"
+  lunch_reminder_offset: 30  # minutes before lunch to remind
+  evening_reminder_offset: 30  # minutes before work end to remind
+
+# Messages
+messages:
+  confirmation_request: "Are you planning to sleep at R&B's in Wallingford tonight? React with 🏠 if yes and free for activities, 🏢 if yes but busy this evening, 🕒 if yes but busy all day, 🚗 if going home, or ❓ if unsure, then add 👍 to confirm."
+  group_announcement: "Alex is here! React with {activity_options} Represents an appropriate emoji."
+  lunch_reminder: "Don't forget about lunch at {lunch_time}!"
+  evening_reminder: "Time to think about what to pick up for this evening: {evening_plans}"
