@@ -9,3 +9,6 @@ wheels/
 # Virtual environments
 .venv
 CLAUDE.secrets.md
+
+.coverage
+coverage.xml

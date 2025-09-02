@@ -75,7 +75,63 @@ cd wallingford-bot
 uv run mbc build --upload  # Auto-updates running instance
 ```
 
-## Testing
+## Testing Commands
+```bash
+# Install test dependencies
+uv add --group test pytest pytest-asyncio pytest-mock pytest-cov
+
+# Run all tests
+uv run pytest
+
+# Run tests with coverage report
+uv run pytest --cov=wallingfordbot --cov-report=term-missing
+
+# Run specific test file
+uv run pytest tests/unit/test_bot.py
+
+# Run tests with verbose output
+uv run pytest -v
+
+# Run only fast tests (exclude slow/integration tests)
+uv run pytest -m "not slow and not integration"
+```
+
+## Unit Testing
+Comprehensive test suite with 67 tests achieving 100% code coverage:
+
+### Test Structure
+```
+tests/
+├── unit/
+│   ├── test_bot.py      # Core bot logic (57 tests)
+│   ├── test_config.py   # Configuration management (2 tests)
+│   └── test_db.py       # Database migrations (8 tests)
+└── fixtures/
+    ├── matrix_events.py # Mock Matrix events and data
+    └── config.py        # Mock configuration data
+```
+
+### Coverage
+- **100% code coverage** across all modules
+- Complete test coverage on all components
+- 67 tests covering every code path and edge case
+
+### Test Categories
+- **Webhook handling**: Authentication, test mode, error handling
+- **Reaction processing**: Confirmation reactions, activity reactions, filtering
+- **Workflow management**: Session creation, state transitions, announcements
+- **Database operations**: Session storage, activity tracking, reminders
+- **Configuration**: Property access, validation, update handling
+- **Database migrations**: Table creation for PostgreSQL and SQLite
+
+### Key Test Features
+- Async test support with pytest-asyncio
+- Comprehensive mocking of maubot/Matrix dependencies
+- Time-based testing with datetime mocking
+- Proper isolation between tests
+- Coverage reporting (terminal, HTML, XML)
+
+## Manual Testing
 1. Trigger webhook with test mode (clears existing sessions) using command from CLAUDE.secrets.md file in root of repository.
 2. React with availability emoji (🏠/🏢/🕒/🚗/❓) then 👍 in private room
 3. Check for customized group announcement based on availability
